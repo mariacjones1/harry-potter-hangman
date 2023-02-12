@@ -5,18 +5,18 @@ def welcome_message():
     """
     Prints welcome message and game instructions
     """
-    print("Hello and welcome to...\n")
-    print("HARRY POTTER HANGMAN!\n")
-    print("Instructions:")
-    print("Test your knowledge of wizarding words.\n")
-    print("For each new round, choose a new letter you think is in the word.")
-    print("If you are correct, the letter will be added to the word.")
-    print("If you are incorrect, the man will be one step closer ")
-    print("to being hanged.\n")
-    print("You have five lives. If you use all five lives")
-    print("without guessing the word correctly, the man will be hanged and")
-    print("you will lose the game.\n")
-    print("Now that you know the rules, would you like to play?")
+    print("Hello and welcome to...\n"
+          "HARRY POTTER HANGMAN!\n"
+          "Instructions:"
+          "Test your knowledge of wizarding words.\n"
+          "For each new round, choose a new letter you think is in the word.\n"
+          "If you are correct, the letter will be added to the word.\n"
+          "If you are incorrect, the man will be one step closer "
+          "to being hanged.\n"
+          "You have five lives. If you use all five lives"
+          "without guessing the word correctly, the man will be hanged and"
+          "you will lose the game.\n"
+          "Now that you know the rules, would you like to play?")
 
 
 def start_game():
@@ -50,15 +50,33 @@ def new_word(words):
     return word
 
 
+def guess_a_letter(word):
+    """
+    Takes user input, checks it is a single letter that hasn't already
+    been guessed, and checks if it is in the word
+    """
+    letter = input("Guess a letter: ").upper()
+
+    if letter.isalpha() is False and len(letter) != 1:
+        print("Guess must be a single letter. Please guess again")
+    elif letter in word:
+        print("Correct!")
+    else:
+        print("Incorrect :(")
+
+
 def main():
     """
     Runs main game functions
     """
     welcome_message()
     start_game()
-    words_to_guess = ["quaffle", "chamber", "phoenix", "pensieve", "horcrux",
-                      "quidditch", "hufflepuff", "niffler", "potions", "troll"]
-    print(new_word(words_to_guess))
+    words_to_guess = ["QUAFFLE", "CHAMBER", "PHOENIX", "PENSIEVE", "HORCRUX",
+                      "QUIDDITCH", "HUFFLEPUFF", "NIFFLER", "POTIONS", "TROLL"]
+    word = new_word(words_to_guess)
+    print(f"Word contains {len(word)} letters.")
+    print(word)
+    guess_a_letter(word)
 
 
 main()
