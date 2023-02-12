@@ -19,4 +19,28 @@ def welcome_message():
     print("Now that you know the rules, would you like to play?")
 
 
-welcome_message()
+def start_game():
+    """
+    Ask if user wants to initiate the game and validate answer.
+    If user inputs 'Y', continue with code to run game. If user
+    imputs 'N', exit code. If user inputs anything else, ask them to
+    input either 'Y' or 'N'.
+    """
+    while True:
+        user_start = input("Y/N\n").upper()
+
+        if user_start == "Y":
+            break
+        elif user_start == "N":
+            print("Maybe next time!")
+            exit()
+        else:
+            print(f"Invalid input: {user_start}. Please type 'Y' or 'N'")
+
+    return user_start
+
+
+def main():
+    welcome_message()
+    start_game()
+    words_to_guess = ["quaffle", "chamber", "phoenix", "pensieve", "horcrux", "quidditch", "hufflepuff", "niffler", "potions", "troll"]
