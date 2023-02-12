@@ -43,4 +43,5 @@ def start_game():
 def main():
     welcome_message()
     start_game()
-    words_to_guess = ["quaffle", "chamber", "phoenix", "pensieve", "horcrux", "quidditch", "hufflepuff", "niffler", "potions", "troll"]
+    words_to_guess = ["quaffle", "chamber", "phoenix", "pensieve", "horcrux", 
+                      "quidditch", "hufflepuff", "niffler", "potions", "troll"]
