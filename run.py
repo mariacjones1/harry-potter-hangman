@@ -40,8 +40,22 @@ def start_game():
     return user_start
 
 
+def new_word(list):
+    """
+    Generates the word to guess for the round
+    from a given list of words
+    """
+    word = random.choice(list)
+
+    return word
+
+
 def main():
     welcome_message()
     start_game()
     words_to_guess = ["quaffle", "chamber", "phoenix", "pensieve", "horcrux", 
                       "quidditch", "hufflepuff", "niffler", "potions", "troll"]
+    print(new_word(words_to_guess))
+
+
+main()
