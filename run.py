@@ -13,7 +13,7 @@ def welcome_message():
           "If you are correct, the letter will be added to the word.\n"
           "If you are incorrect, the man will be one step closer "
           "to being hanged.\n"
-          "You have six lives. If you use all six lives"
+          "You have 7 lives. If you use all 7 lives"
           "without guessing the word correctly, the man will be hanged and"
           "you will lose the game.\n"
           "Now that you know the rules, would you like to play?")
@@ -56,7 +56,7 @@ def play_game(word, blank_word):
     been guessed, and checks if it is in the word
     """
     guessed_letters = []
-    lives = 6
+    lives = 7
 
     while lives > 0:
         guess = input("Guess a letter: ").upper()
@@ -80,6 +80,106 @@ def play_game(word, blank_word):
         else:
             print("Incorrect :(")
             lives -= 1
+            guessed_letters.append(guess)
+            print(guessed_letters)
+
+        print(show_hangman(lives))
+
+
+def show_hangman(lives):
+    """
+    Shows current hangman state based on remaining lives,
+    i.e., 7 remaining lives shows:
+    -------
+    |      |
+    |
+    |
+    |
+    |
+    -
+    whereas 0 remaining lives shows:
+    -------
+    |      |
+    |      O
+    |    \\|/
+    |      |
+    |     / \\
+    -
+    """
+    if lives == 0:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |    \\|/
+                     |      |
+                     |     / \\
+                     -"""
+    elif lives == 1:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |    \\|/
+                     |      |
+                     |     /
+                     -"""
+    elif lives == 2:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |    \\|/
+                     |      |
+                     |
+                     -"""
+    elif lives == 3:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |    \\|/
+                     |
+                     |
+                     -"""
+    elif lives == 4:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |    \\|
+                     |
+                     |
+                     -"""
+    elif lives == 5:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |      |
+                     |
+                     |
+                     -"""
+    elif lives == 6:
+        hanged_man = """
+                     -------
+                     |      |
+                     |      O
+                     |
+                     |
+                     |
+                     -"""
+    elif lives == 7:
+        hanged_man = """
+                     -------
+                     |      |
+                     |
+                     |
+                     |
+                     |
+                     -"""
+
+    return hanged_man
 
 
 def main():
