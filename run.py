@@ -84,6 +84,7 @@ def play_game(word, blank_word):
             guessed_letters.append(guess)
             if lives == 0:
                 print("Hangman! You lose.")
+                print(show_hangman(lives))
                 break
 
         print(f"{blank_word}\n")
@@ -126,7 +127,7 @@ def show_hangman(lives):
     -------
     |      |
     |      O
-    |    \\|/
+    |     \\|/
     |      |
     |     /
     -"""
