@@ -77,14 +77,13 @@ def play_game(word, blank_word):
             blank_word = "".join(word_as_list)
             if "_" not in blank_word:
                 print("Word guessed correctly! You win!")
-                print("Would you like to play again?")
                 break
         else:
             print("Incorrect :(\n")
             lives -= 1
             guessed_letters.append(guess)
             if lives == 0:
-                print("Hangman! Would you like to play again?")
+                print("Hangman! You lose.")
                 break
 
         print(f"{blank_word}\n")
@@ -198,13 +197,16 @@ def main():
         start_game()
         words_to_guess = ["QUAFFLE", "CHAMBER", "PHOENIX", "PENSIEVE",
                           "HORCRUX", "QUIDDITCH", "HUFFLEPUFF", "NIFFLER",
-                          "POTIONS", "TROLL"]
+                          "POTIONS", "TROLL", "SCAR", "LUMOS", "DEMENTOR",
+                          "TRIWIZARD", "MIRROR", "ACROMANTULA", "KNEAZLE",
+                          "DIARY", "STONE", "CLOAK", "HOGSMEADE", "HOGWARTS",
+                          "FOREST", "CENTAUR", "PREFECT", "MINISTRY"]
         word = new_word(words_to_guess)
         print(f"Word contains {len(word)} letters.")
-        print(word)
         blank_word = "_" * len(word)
         print(blank_word)
         play_game(word, blank_word)
+        print("Would you like to play again?")
 
 
 main()
