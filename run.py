@@ -50,17 +50,28 @@ def new_word(words):
     return word
 
 
-def guess_a_letter(word):
+def guess_a_letter(word, blank_word):
     """
     Takes user input, checks it is a single letter that hasn't already
     been guessed, and checks if it is in the word
     """
-    letter = input("Guess a letter: ").upper()
+    guess = input("Guess a letter: ").upper()
+    guessed_letters = []
 
-    if letter.isalpha() is False and len(letter) != 1:
+    if guess.isalpha() is False and len(guess) != 1:
         print("Guess must be a single letter. Please guess again")
-    elif letter in word:
+    elif guess in word:
         print("Correct!")
+        guessed_letters.append(guess)
+        print(guessed_letters)
+        # following code adapted from
+        # https://www.youtube.com/watch?v=m4nEnsavl6w&ab_channel=Kite
+        word_as_list = list(blank_word.split(" "))
+        indices = [i for i, letter in enumerate(word) if letter == guess]
+        for index in indices:
+            word_as_list[index] = guess
+        blank_word = "".join(word_as_list)
+        print(blank_word)
     else:
         print("Incorrect :(")
 
@@ -75,8 +86,10 @@ def main():
                       "QUIDDITCH", "HUFFLEPUFF", "NIFFLER", "POTIONS", "TROLL"]
     word = new_word(words_to_guess)
     print(f"Word contains {len(word)} letters.")
-    print("_ " * len(word))
-    guess_a_letter(word)
+    print(word)
+    blank_word = "_ " * len(word)
+    print(blank_word)
+    guess_a_letter(word, blank_word)
 
 
 main()
