@@ -68,7 +68,6 @@ def play_game(word, blank_word):
         elif guess in word:
             print("Correct!")
             guessed_letters.append(guess)
-            print(guessed_letters)
             # following code adapted from
             # https://www.youtube.com/watch?v=m4nEnsavl6w&ab_channel=Kite
             word_as_list = list(blank_word)
@@ -77,13 +76,20 @@ def play_game(word, blank_word):
                 word_as_list[index] = guess
             blank_word = "".join(word_as_list)
             print(blank_word)
+            if "_" not in blank_word:
+                print("Word guessed correctly! You win!")
+                break
         else:
             print("Incorrect :(")
             lives -= 1
             guessed_letters.append(guess)
-            print(guessed_letters)
+            if lives == 0:
+                print("Hangman! Would you like to play again?")
+                break
 
         print(show_hangman(lives))
+        print(f"Guessed letters: {guessed_letters}")
+        print(f"Remaining lives: {lives}")
 
 
 def show_hangman(lives):
@@ -111,7 +117,7 @@ def show_hangman(lives):
                      -------
                      |      |
                      |      O
-                     |    \\|/
+                     |     \\|/
                      |      |
                      |     / \\
                      -"""
@@ -129,7 +135,7 @@ def show_hangman(lives):
                      -------
                      |      |
                      |      O
-                     |    \\|/
+                     |     \\|/
                      |      |
                      |
                      -"""
@@ -138,7 +144,7 @@ def show_hangman(lives):
                      -------
                      |      |
                      |      O
-                     |    \\|/
+                     |     \\|/
                      |
                      |
                      -"""
@@ -147,7 +153,7 @@ def show_hangman(lives):
                      -------
                      |      |
                      |      O
-                     |    \\|
+                     |     \\|
                      |
                      |
                      -"""
