@@ -7,14 +7,14 @@ def welcome_message():
     """
     print("Hello and welcome to...\n"
           "HARRY POTTER HANGMAN!\n"
-          "Instructions:"
+          "Instructions:\n"
           "Test your knowledge of wizarding words.\n"
           "For each new round, choose a new letter you think is in the word.\n"
           "If you are correct, the letter will be added to the word.\n"
           "If you are incorrect, the man will be one step closer "
           "to being hanged.\n"
-          "You have 7 lives. If you use all 7 lives"
-          "without guessing the word correctly, the man will be hanged and"
+          "You have 7 lives. If you use all 7 lives "
+          "without guessing the word correctly, the man will be hanged and "
           "you will lose the game.\n"
           "Now that you know the rules, would you like to play?")
 
@@ -202,7 +202,7 @@ def main():
                           "DIARY", "STONE", "CLOAK", "HOGSMEADE", "HOGWARTS",
                           "FOREST", "CENTAUR", "PREFECT", "MINISTRY"]
         word = new_word(words_to_guess)
-        print(f"Word contains {len(word)} letters.")
+        print(f"\nWord contains {len(word)} letters.\n")
         blank_word = "_" * len(word)
         print(blank_word)
         play_game(word, blank_word)
