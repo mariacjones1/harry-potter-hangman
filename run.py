@@ -66,7 +66,7 @@ def play_game(word, blank_word):
         elif guess in guessed_letters:
             print("You've already guessed that letter!")
         elif guess in word:
-            print("Correct!")
+            print("Correct!\n")
             guessed_letters.append(guess)
             # following code adapted from
             # https://www.youtube.com/watch?v=m4nEnsavl6w&ab_channel=Kite
@@ -75,21 +75,22 @@ def play_game(word, blank_word):
             for index in indices:
                 word_as_list[index] = guess
             blank_word = "".join(word_as_list)
-            print(blank_word)
             if "_" not in blank_word:
                 print("Word guessed correctly! You win!")
+                print("Would you like to play again?")
                 break
         else:
-            print("Incorrect :(")
+            print("Incorrect :(\n")
             lives -= 1
             guessed_letters.append(guess)
             if lives == 0:
                 print("Hangman! Would you like to play again?")
                 break
 
+        print(f"{blank_word}\n")
         print(show_hangman(lives))
         print(f"Guessed letters: {guessed_letters}")
-        print(f"Remaining lives: {lives}")
+        print(f"Remaining lives: {lives}\n")
 
 
 def show_hangman(lives):
@@ -114,76 +115,76 @@ def show_hangman(lives):
     """
     if lives == 0:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |     \\|/
-                     |      |
-                     |     / \\
-                     -"""
+    -------
+    |      |
+    |      O
+    |     \\|/
+    |      |
+    |     / \\
+    -"""
     elif lives == 1:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |    \\|/
-                     |      |
-                     |     /
-                     -"""
+    -------
+    |      |
+    |      O
+    |    \\|/
+    |      |
+    |     /
+    -"""
     elif lives == 2:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |     \\|/
-                     |      |
-                     |
-                     -"""
+    -------
+    |      |
+    |      O
+    |     \\|/
+    |      |
+    |
+    -"""
     elif lives == 3:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |     \\|/
-                     |
-                     |
-                     -"""
+    -------
+    |      |
+    |      O
+    |     \\|/
+    |
+    |
+    -"""
     elif lives == 4:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |     \\|
-                     |
-                     |
-                     -"""
+    -------
+    |      |
+    |      O
+    |     \\|
+    |
+    |
+    -"""
     elif lives == 5:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |      |
-                     |
-                     |
-                     -"""
+    -------
+    |      |
+    |      O
+    |      |
+    |
+    |
+    -"""
     elif lives == 6:
         hanged_man = """
-                     -------
-                     |      |
-                     |      O
-                     |
-                     |
-                     |
-                     -"""
+    -------
+    |      |
+    |      O
+    |
+    |
+    |
+    -"""
     elif lives == 7:
         hanged_man = """
-                     -------
-                     |      |
-                     |
-                     |
-                     |
-                     |
-                     -"""
+    -------
+    |      |
+    |
+    |
+    |
+    |
+    -"""
 
     return hanged_man
 
@@ -193,15 +194,17 @@ def main():
     Runs main game functions
     """
     welcome_message()
-    start_game()
-    words_to_guess = ["QUAFFLE", "CHAMBER", "PHOENIX", "PENSIEVE", "HORCRUX",
-                      "QUIDDITCH", "HUFFLEPUFF", "NIFFLER", "POTIONS", "TROLL"]
-    word = new_word(words_to_guess)
-    print(f"Word contains {len(word)} letters.")
-    print(word)
-    blank_word = "_" * len(word)
-    print(blank_word)
-    play_game(word, blank_word)
+    while True:
+        start_game()
+        words_to_guess = ["QUAFFLE", "CHAMBER", "PHOENIX", "PENSIEVE",
+                          "HORCRUX", "QUIDDITCH", "HUFFLEPUFF", "NIFFLER",
+                          "POTIONS", "TROLL"]
+        word = new_word(words_to_guess)
+        print(f"Word contains {len(word)} letters.")
+        print(word)
+        blank_word = "_" * len(word)
+        print(blank_word)
+        play_game(word, blank_word)
 
 
 main()
