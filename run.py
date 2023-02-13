@@ -60,6 +60,8 @@ def guess_a_letter(word, blank_word):
 
     if guess.isalpha() is False and len(guess) != 1:
         print("Guess must be a single letter. Please guess again")
+    elif guess in guessed_letters:
+        print("You've already guessed that letter!")
     elif guess in word:
         print("Correct!")
         guessed_letters.append(guess)
