@@ -75,7 +75,7 @@ def main():
                       "QUIDDITCH", "HUFFLEPUFF", "NIFFLER", "POTIONS", "TROLL"]
     word = new_word(words_to_guess)
     print(f"Word contains {len(word)} letters.")
-    print(word)
+    print("_ " * len(word))
     guess_a_letter(word)
 
 
