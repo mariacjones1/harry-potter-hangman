@@ -76,6 +76,7 @@ def play_game(word, blank_word):
                 word_as_list[index] = guess
             blank_word = "".join(word_as_list)
             if "_" not in blank_word:
+                print(f"{blank_word}\n")
                 print("Word guessed correctly! You win!")
                 break
         else:
@@ -84,6 +85,7 @@ def play_game(word, blank_word):
             guessed_letters.append(guess)
             if lives == 0:
                 print("Hangman! You lose.")
+                print(f"The word was {word}")
                 print(show_hangman(lives))
                 break
 
